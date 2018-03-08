@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
+   <title>SystemInfo</title>
+</head>
+<body>
+    <div class="container">
+        <h1>System Information</h1>
+        <div  id="output"></div>
+    </div>
+
+
+   
+    <script>
+     let output = `
+     <h2 class="page-header">App Version Data</h2>
+        <ul class="list-group">
+        <li class="list-group-item"> Node: ${process.versions.node}</li>
+        <li class="list-group-item"> Chrome: ${process.versions.chrome}</li>
+        <li class="list-group-item"> Electron: ${process.versions.electron}</li>
+       </ul>
+
+       <h2 class="page-header">System Specs</h2>
+        <ul class="list-group">
+        <li class="list-group-item"> Architecture: ${process.arch}</li>
+        <li class="list-group-item"> Processor ID: ${process.env.PROCESSOR_IDENTIFIER}</li>
+        <li class="list-group-item"> Computer Name: ${process.env.COMPUTERNAME}</li>
+        <li class="list-group-item"> User Name: ${process.env.USERNAME}</li>
+       </ul>
+       <h2 class="page-header">Memory Specs</h2>
+        <ul class="list-group">
+        <li class="list-group-item"> Total: ${process.getSystemMemoryInfo().total}</li>
+        <li class="list-group-item"> Free: ${process.getSystemMemoryInfo().free}</li>
+        <li class="list-group-item"> Swap Total: ${process.getSystemMemoryInfo().swapTotal}</li>
+        <li class="list-group-item"> Swap Free: ${process.getSystemMemoryInfo().swapFree}</li>
+       </ul>
+     `;
+     console.log(process);
+     document.getElementById('output').innerHTML = output;
+    </script>
+    <script>
+        require('./renderer.js');
+    </script>
+</body>
+</html>
